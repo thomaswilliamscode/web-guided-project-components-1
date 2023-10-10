@@ -72,7 +72,13 @@ function makePanel(/* what data does the panel need? */) {
       <div></div>           // panelContent
     </div>
   */
-
+  accordion.appendChild(panel)
+  panel.appendChild(panelBar)
+  panel.appendChild(panelContent);
+  panelBar.append(panelTitle)
+  panelBar.append(panelButtons)
+  panelButtons.append(openButton)
+  panelButtons.append(closeButton);
 
   // TASK 7- Add proper class names to our elements (See index.html for reference)
   // paying attention to the elements that need to start out hidden
