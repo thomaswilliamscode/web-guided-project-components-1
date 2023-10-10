@@ -50,13 +50,13 @@ function makePanel(/* what data does the panel need? */) {
 
 
   // TASK 5- Instantiate all the elements needed for a panel
-  const panel = null
-  const panelBar = null
-  const panelContent = null
-  const panelTitle = null
-  const panelButtons = null
-  const openButton = null
-  const closeButton = null
+  const panel = document.createElement('div') 
+  const panelBar = document.createElement('div') 
+  const panelTitle = document.createElement('h3')
+  const panelContent = document.createElement('div')
+  const panelButtons = document.createElement('div')
+  const openButton = document.createElement('button')
+  const closeButton = document.createElement('button')
 
 
   // TASK 6- Setup the structure of our elements
@@ -76,7 +76,14 @@ function makePanel(/* what data does the panel need? */) {
 
   // TASK 7- Add proper class names to our elements (See index.html for reference)
   // paying attention to the elements that need to start out hidden
-
+  panel.classList.add('panel')
+  panelBar.classList.add('panel-bar')
+  panelContent.classList.add('panel-content')
+  panelContent.classList.add('toggle-on');
+  panelButtons.classList.add('panel-buttons');
+  openButton.classList.add('panel-btn-open');
+  closeButton.classList.add('panel-btn-close');
+  closeButton.classList.add('hide-btn');
 
   // TASK 8- Set text content using arguments as raw material
   //  and also using the open and close arrows imported at the top of the file
