@@ -46,7 +46,7 @@ const accordion = document.querySelector('div.accordion')
 
 
 // TASK 4- Create a function 'makePanel' that creates a panel exactly as you see it in the HTML.
-function makePanel(/* what data does the panel need? */) {
+function makePanel( { title, content} ) {
 
 
   // TASK 5- Instantiate all the elements needed for a panel
@@ -75,40 +75,56 @@ function makePanel(/* what data does the panel need? */) {
   accordion.appendChild(panel)
   panel.appendChild(panelBar)
   panel.appendChild(panelContent);
-  panelBar.append(panelTitle)
-  panelBar.append(panelButtons)
-  panelButtons.append(openButton)
-  panelButtons.append(closeButton);
+  panelBar.appendChild(panelTitle)
+  panelBar.appendChild(panelButtons)
+  panelButtons.appendChild(openButton)
+  panelButtons.appendChild(closeButton);
 
   // TASK 7- Add proper class names to our elements (See index.html for reference)
   // paying attention to the elements that need to start out hidden
   panel.classList.add('panel')
   panelBar.classList.add('panel-bar')
   panelContent.classList.add('panel-content')
-  panelContent.classList.add('toggle-on');
   panelButtons.classList.add('panel-buttons');
   openButton.classList.add('panel-btn-open');
   closeButton.classList.add('panel-btn-close');
-  closeButton.classList.add('hide-btn');
+  openButton.classList.add('hide-btn');
 
   // TASK 8- Set text content using arguments as raw material
   //  and also using the open and close arrows imported at the top of the file
-
+  panelTitle.textContent = title
+  panelContent.textContent = content
+  openButton.textContent = open
+  closeButton.textContent = close
 
   // TASK 9- When the 'open' or 'close' buttons are clicked, the content is toggled on/off:
   //  - the open button needs to go away (the 'hide-btn' class name controls this)
   //  - the close button needs to show (the 'hide-btn' class name controls this)
   //  - the contents need to show (the 'toggle-on' class name controls this)
 
+  panelButtons.addEventListener('click', () => {
+    // 1, toggle open btn 
+    openButton.classList.toggle('hide-btn')
+    // 2 toggle close btn 
+    closeButton.classList.toggle('hide-btn');
+    // 3rd toggle content 
+    panelContent.classList.toggle('toggle-on')
+  })
+
 
   // don't forget to return the panel!
-  return null
+  return panel
 }
 
+// makePanel({title: 'Thomas', content: 'is amazing'})
 
 // TASK 10- Loop through the panelData we imported from the data folder
 //  creating panels for each content and title and append them to the DOM.
 //  We can do this with a single forEach, or with a map and a forEach.
+
+const panelElements = panelData.map( obj => {
+  makePanel(obj)
+})
 
 
 // [STRETCH] Comment out the links inside the nav and
